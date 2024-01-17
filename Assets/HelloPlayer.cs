@@ -24,7 +24,7 @@ public class HelloPlayer : NetworkBehaviour
         var networkObject = GetComponent<NetworkObject>();
         var playerData = networkObject.GetComponent<PlayerData>();
         _playerName.text = playerData.NickName;
-        PlayerRenderer.GetComponent<Renderer>().material.color = playerData.CharactorColor;
+        //PlayerRenderer.GetComponent<Renderer>().material.color = playerData.CharactorColor;
     }
 
     private void Update()

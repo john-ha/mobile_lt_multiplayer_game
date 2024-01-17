@@ -6,6 +6,10 @@ using UnityEngine;
 public class HelloPlayerMovement : SimulationBehaviour
 {
     private CharacterController _controller;
+    public Animator PlayerAnimator;
+    public RuntimeAnimatorController JumpAnimation;
+    public RuntimeAnimatorController RunAnimation;
+    public RuntimeAnimatorController IdleAnimation;
     public float JumpForce = 5f;
     public float GravityValue = -9.81f;
 
@@ -30,6 +34,7 @@ public class HelloPlayerMovement : SimulationBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             _jumpPressed = true;
+            PlayerAnimator.runtimeAnimatorController = JumpAnimation;
         }
     }
 
@@ -57,6 +62,11 @@ public class HelloPlayerMovement : SimulationBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+            PlayerAnimator.runtimeAnimatorController = RunAnimation;
+        }
+        else
+        {
+            PlayerAnimator.runtimeAnimatorController = IdleAnimation;
         }
 
         _jumpPressed = false;
